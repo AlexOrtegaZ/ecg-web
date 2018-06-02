@@ -69,10 +69,12 @@
     },
     sockets: {
       onmessage: function ({ data }) {
-        var { alertControl, user } = JSON.parse(data);
-        if (alertControl && alertControl._id) {
-          alertControl.user = user;
-          this.alertControls.unshift(alertControl);
+        if (data[0] === '{') {
+          var { alertControl, patient: user } = JSON.parse(data);
+          if (alertControl && alertControl._id) {
+            alertControl.user = user;
+            this.alertControls.unshift(alertControl);
+          }
         }
       }
     },

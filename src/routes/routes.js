@@ -12,6 +12,7 @@ import MyNotifications from 'src/components/Dashboard/Views/MyNotifications/MyNo
 import Users from 'src/components/Dashboard/Views/Users/Users.vue'
 import Devices from 'src/components/Dashboard/Views/Devices/Devices.vue'
 import Login from 'src/components/Login/Login.vue'
+import AboutUs from 'src/components/AboutUs/AboutUs.vue'
 import Patients from 'src/components/Dashboard/Views/Patients/Patients.vue'
 import AuthService from 'src/services/auth.service.js'
 import AlertControlHistory from 'src/components/Dashboard/Views/AlertControlHistory/AlertControlHistory.vue'
@@ -84,6 +85,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/aboutus',
+    name: 'AboutUs',
+    component: AboutUs
   },
   { path: '*', component: NotFound }
 ]

@@ -44,7 +44,6 @@
 <script>
   import AlertsCard from 'components/UIComponents/Cards/AlertsCard.vue'
   import AlertService from 'services/alerts.service'
-  import AuthService from 'services/auth.service'
   // var json = require('./data/232a.json');
 
   // json.patientId = 'ASDASDFN'
@@ -66,9 +65,12 @@
     },
     sockets: {
       onmessage: function ({ data }) {
-        var { alertControl } = JSON.parse(data);
-        if (alertControl && alertControl._id && alertControl.user === AuthService.user._id) {
-          this.alertControls.unshift(alertControl);
+        if (data[0] === '{') {
+          var { alertControl } = JSON.parse(data);
+          const user = JSON.parse(window.localStorage.getItem('user'))
+          if (alertControl && alertControl._id && alertControl.user === user._id) {
+            this.alertControls.unshift(alertControl);
+          }
         }
       }
     },

@@ -1,6 +1,14 @@
 <template>
 <div>
     <div class="wrapper wrapper-full-page">
+        <div class="header row">
+            <div class="col-xs-6">
+                <img src="static/img/CardioNubola5.png" alt="">
+            </div>
+            <div class="col-xs-6">
+                
+            </div>
+        </div>
         <div class="full-page login-page" data-color="" data-image="static/img/hospital.jpg">
         <!--   you can change the color of the filter page using: data-color="blue | azure | green | orange | red | purple" -->
             <div class="content">
@@ -25,13 +33,21 @@
                                     <div class="card-footer text-center">
                                         <button type="submit" class="btn btn-fill btn-wd " @click.prevent="login()">Iniciar Sesión</button>
                                     </div>
+                                     <div class="card-footer text-center">
+                                        <a class="login-link" href="#/aboutus">Mas información click aqui</a>
+                                    </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-        <div class="full-page-background" style="background-image: url(static/img/hospital.jpg) "></div></div>
+        <div class="full-page-background" style="background-image: url(static/img/hospital.jpg) "></div>
+        </div>
+
+        <div class="foo row">
+            <img src="static/img/LogoInferior.png" alt="">
+        </div>
     </div>
 </div>
 </template>
@@ -55,3 +71,31 @@ export default {
   }
 };
 </script>
+<style>
+    .header {
+        position: relative;
+        z-index: 4;
+        margin: 0 !important;
+    }
+    .header img {
+        width: 200px;
+        margin: 20px;
+    }
+    .foo {
+        text-align: center;
+        z-index: 5;
+        background-color: white;
+        position: relative;
+        margin: 0 !important;
+        height: 140px;
+        border-radius: 6px 6px 0 0;
+        box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
+        background-color: #FFFFFF;
+    }
+    .foo img {
+        width: 525px;
+    }
+    .login-link {
+        font-size: 16px;
+    }
+</style>

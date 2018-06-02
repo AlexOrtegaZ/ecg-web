@@ -15,7 +15,7 @@
 
               <div class="icon-big text-center icon-danger"><i class="ti-pulse"></i></div>
             </div>
-          {{ user.name + ' ' + user.lastName }}
+          {{ user && user.name + ' ' + user.lastName }}
         </a>
       </div>
       <slot>

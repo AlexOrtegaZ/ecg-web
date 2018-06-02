@@ -11,22 +11,25 @@
   export default {
     sockets: {
       onmessage: function ({ data }) {
-        if (Notification.permission !== 'granted') {
-          Notification.requestPermission();
-        } else {
-          var { alert, user } = JSON.parse(data);
-          if (alert && alert._id && alert.verde !== -1) {
-            var alertType = this.getType(alert.details);
-            var notification = new Notification('Alerta ' + (alertType === 'success' ? 'Verde' : (alertType === 'warning' ? 'Arritmia' : 'Roja')), {
-              icon: 'static/img/heart.png',
-              body: 'De ' + user.name + ' ' + user.lastName
-            });
-            var router = this.$router;
-            notification.onclick = function () {
-              router.push({ path: '/user/' + user._id + '/' + alert._id })
-              window.focus();
-              notification.close()
-            };
+        if (data[0] === '{') {
+          if (Notification.permission !== 'granted') {
+            Notification.requestPermission();
+          } else {
+            console.log(data);
+            var { alert, patient: user } = JSON.parse(data);
+            if (alert && alert._id && alert.verde !== -1) {
+              var alertType = this.getType(alert.details);
+              var notification = new Notification('Alerta ' + (alertType === 'success' ? 'Verde' : (alertType === 'warning' ? 'Arritmia' : 'Roja')), {
+                icon: 'static/img/heart.png',
+                body: 'De ' + user.name + ' ' + user.lastName
+              });
+              var router = this.$router;
+              notification.onclick = function () {
+                router.push({ path: '/user/' + user._id + '/' + alert._id })
+                window.focus();
+                notification.close()
+              };
+            }
           }
         }
       }
@@ -44,7 +47,7 @@
         Notification.requestPermission();
       }
       setTimeout(() => {
-        this.$socket.send('AUTH:dd1');
+        this.$socket.send('AUTH:pp1');
       }, 1000)
     },
     methods: {

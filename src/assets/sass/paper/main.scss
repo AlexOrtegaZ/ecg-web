@@ -45,11 +45,14 @@ body .wrapper {
     background-size: cover;
     background-position: center center;
 }
-.login-page > .content, .lock-page > .content {
+.lock-page > .content {
     padding-top: 20vh;
 }
+.login-page > .content{
+    padding-top: 5vh;
+}
 .full-page > .content {
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 235px);
 }
 .full-page > .content, .full-page > .footer {
     position: relative;

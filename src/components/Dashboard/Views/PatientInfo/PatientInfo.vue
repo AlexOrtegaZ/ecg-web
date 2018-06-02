@@ -68,7 +68,6 @@
         }
       },
       sendAlertToDoctor: function () {
-        console.log(this.currentAlert);
         AlertsSerivice.sendAlertToDoctor(this.alertControlId, this.currentAlert._id, this.currentAlert.user).then((res) => {
           this.$router.push({ path: '/notifications' })
         });
@@ -85,10 +84,12 @@
     },
     sockets: {
       onmessage: function ({ data }) {
-        var { alert, user } = JSON.parse(data);
-        if (alert && alert._id && alert.details.verde === -1 && user._id === this.user._id) {
-          this.alert = alert;
-          this.$router.push({ path: '/user/' + user._id + '/' + alert._id })
+        if (data[0] === '{') {
+          var { alert, patient: user } = JSON.parse(data);
+          if (alert && alert._id && alert.details.verde === -1 && user._id === this.user._id) {
+            this.alert = alert;
+            this.$router.push({ path: '/user/' + user._id + '/' + alert._id })
+          }
         }
       }
     },
